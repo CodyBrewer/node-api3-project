@@ -20,12 +20,11 @@ function getUserPosts(userId) {
 function insert(user) {
   return db('users')
     .insert(user)
-    .then((ids) => {
-      getById(ids[0]);
-    });
+    .then((ids) => getById(ids[0]));
 }
 
 function update(id, changes) {
+  console.log('id: ', id, 'changes: ', changes);
   return db('users')
     .where({ id })
     .update(changes);

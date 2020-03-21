@@ -1,7 +1,8 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-const { logger } = require('./middleware/index');
+const { logger } = require('./middleware/index.js');
+const usersRouter = require('./users/userRouter.js');
 
 const server = express();
 
@@ -13,6 +14,9 @@ server.use(helmet());
 server.use(cors());
 // Custom
 server.use(logger);
+
+// Routes
+server.use('/api/users', usersRouter);
 
 server.get('/', (req, res) => {
   // eslint-disable-next-line quotes

@@ -11,11 +11,10 @@ function getById(id) {
 }
 
 function insert(post) {
+  console.log(post);
   return db('posts')
     .insert(post)
-    .then((ids) => {
-      getById(ids[0]);
-    });
+    .then((ids) => getById(ids[0]));
 }
 
 function update(id, changes) {
